@@ -20,5 +20,5 @@ def searchTweets(query):
     return result
 
 tweets  = searchTweets('query')
-for x in tweets:
-    print(x)
+for tweet in tweets:
+    print(tweet)
