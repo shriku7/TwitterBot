@@ -23,21 +23,16 @@ def searchTweets(query):
     return result
  
 def emotions(x):  
-    Angry = 0
-    Happy = 0
-    Sad = 0
-    Surprise = 0
-    Fear = 0
+    emotions = [0,0,0,0,0]
     for a in x:
         a = te.get_emotion(a)
         b = [int(a['Angry']), int(a['Fear']), int(a['Happy']), int(a['Sad']),int(a['Surprise'])]
-        Angry += b[0]
-        Fear += b[1]
-        Happy += b[2]
-        Sad += b[3]
-        Surprise += b[4]
-    total = Angry + Fear + Sad + Surprise + Happy
-    Emotionspct = [str(round(Angry/total*100)),str(round(Fear/total*100)), str(round(Happy/total*100)), str(round(Sad/total*100)), str(round(Surprise/total*100))]
+        for i in range(5):
+            emotions[i] += b[i]
+    total = sum(x for x in emotions)
+    Emotionspct = []
+    for x in range(5):
+        Emotionspct.append(str(round(emotions[x]/total*100)))
     return Emotionspct
 
 
