@@ -6,18 +6,11 @@ import json
 
 def searchTweets(query):
     client = Config.get_client()
-
     auth = tweepy.OAuthHandler(Config.consumer_key, Config.consumer_secret)
     auth.set_access_token(Config.access_token, Config.access_token_secret)
     tapi = tweepy.API(auth)
-
-
     tweets = [x._json for x in tweepy.Cursor(tapi.search_tweets, q=query, lang="en", tweet_mode='extended', count = 500).items(500)]
-
- 
-
     result = []
-
     for tweet in tweets:
         result.append(tweet["full_text"])
     return result
@@ -34,7 +27,6 @@ def emotions(x):
     for x in range(5):
         Emotionspct.append(str(round(emotions[x]/total*100)))
     return Emotionspct
-
 
 query = input('Enter the word(s) you want analysed: ')
 tweets  = searchTweets(query)
