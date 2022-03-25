@@ -16,7 +16,9 @@ def searchTweets(query):
     return result
  
 def emotions(x):  
-    emotions = [0,0,0,0,0]
+    emotions = []
+    for x in range[5]:
+        emotions.append(0)
     for a in x:
         a = te.get_emotion(a)
         b = [int(a['Angry']), int(a['Fear']), int(a['Happy']), int(a['Sad']),int(a['Surprise'])]
